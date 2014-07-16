@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+
   root 'categories#index'
-  resources :users  
+  resources :users
+  resources :pledges  
   resources :categories do
     resources :projects
   end
