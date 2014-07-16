@@ -1,0 +1,14 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    = render 'errors'
+  .user-input
+    = f.label :first_name
+    = f.text_field :first_name
+  .user-input
+    = f.label :last_name
+    = f.text_field :last_name
+  .user-input
+    = f.label :email
+    = f.text_field :email
+  .btn-submit
+    = f.submit
