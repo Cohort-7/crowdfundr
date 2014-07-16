@@ -1,0 +1,31 @@
+%div
+
+	%h1= @project.title
+
+	%h3 Project created by #{@project.owner_first_name} #{@project.owner_last_name}
+
+	%p Project start date: #{pretty_time(@project.start_time)}
+	%p Project end date: #{pretty_time(@project.end_time)}
+	%p
+		Time left:
+		%b= @project.time_left
+
+	%p
+		%b Description:
+		%br
+		= @project.description
+
+	%p
+		%b Goal:
+		$#{@project.goal}
+	%p
+		%b Collected money:
+		$#{@project.collected_money}
+
+	%div
+		%b Rewards:
+		- @project.sorted_rewards.each do |reward|
+			%p
+				= reward.description
+				%b for $#{reward.cost}
+				(#{reward.backers_amount} backers)

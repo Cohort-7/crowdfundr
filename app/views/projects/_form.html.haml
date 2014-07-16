@@ -1,0 +1,20 @@
+= form_for @project do |f|
+
+	= f.label :title
+	= f.text_field :title
+	%br
+	= f.label :description
+	= f.text_area :description
+	%br
+	= f.label :goal
+	= f.text_field :goal
+	%br
+	= collection_select(:project, :category_id, Category.all, :id, :name, {:prompt => "-- select category"})
+	%br
+	#tasks
+		= f.fields_for :rewards, f.object.sorted_rewards do |reward|
+			= render 'reward_fields', :f => reward
+		.links
+			= link_to_add_association 'add reward', f, :rewards
+	%br
+	= f.submit
