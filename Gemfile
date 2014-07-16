@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "paperclip", "~> 4.1"
 gem 'faker'
 gem 'haml-rails'
 gem 'cocoon'

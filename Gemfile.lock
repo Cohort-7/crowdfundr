@@ -39,6 +39,10 @@ GEM
       thor
     builder (3.2.2)
     callsite (0.0.11)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -80,6 +84,11 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.0)
     multi_json (1.10.1)
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.0)
@@ -153,6 +162,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   meta_request
+  paperclip (~> 4.1)
   pg
   pry
   rails (= 4.1.1)
