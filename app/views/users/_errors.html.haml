@@ -4,5 +4,5 @@
     prohibited this user from being saved:
 
   %ul
-    -@user.errors.each do |msg|
+    -@user.errors.full_messages.each do |msg|
       %li= msg
