@@ -1,27 +1,2 @@
 %h1 Sign Up!
-= form_for @user do |f|
-  = if @user.errors.any?
-    .error-messages
-      %h2= pluralize(@user.errors.count, "error")
-      "prohibited this user from being saved:"
-      %ul
-        -@user.errors.each do |msg|
-          %li= msg
-
-  .user-input
-    = f.label :first_name
-    = f.text_field :first_name
-  .user-input
-    = f.label :last_name
-    = f.text_field :last_name
-  .user-input
-    = f.label :email
-    = f.text_field :email
-  .user-input
-    = f.label :password
-    = f.password_field :password
-  .user-input
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  .btn-submit
-    = f.submit
+= render :partial => 'user_form'
