@@ -1,5 +1,6 @@
-%h3
-  = @user.name
-
-%h4
-  = render 'user_projects'
+%h1
+  = @user.first_name
+  = @user.last_name
+%h2
+  =@user.email
+= render 'user_projects'

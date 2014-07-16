@@ -1,0 +1,6 @@
+.user-project
+  - @user.projects.each do |project|
+    %h3= project.title
+    %p= project.description
+    %p= project.start_time
+    %p= project.end_time
