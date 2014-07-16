@@ -16,3 +16,6 @@
 /tmp
 
 .DS_Store
+
+# Block picture uploading to github
+/public/system/*

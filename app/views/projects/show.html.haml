@@ -2,6 +2,8 @@
 
 	%h1= @project.title
 
+	= image_tag @project.picture.url(:thumb)
+
 	%h3 Project created by #{@project.owner_first_name} #{@project.owner_last_name}
 
 	%p Project start date: #{pretty_time(@project.start_time)}
