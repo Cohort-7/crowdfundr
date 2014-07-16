@@ -1,0 +1,13 @@
+
+<% @top_projects.each do |project| %>
+	<p><%= link_to project.title %><p>
+	<%= link_to image_tag("http://www.htxt.co.za/wp-content/uploads/2013/10/gumstick.jpg")%>
+	<p><%= project.description %>
+	<p><%= project.goal %>
+	<p><%= project.start_time %>
+	<p><%= project.end_time %>
+<% end %>
+
+<select id="category">
+<%= render @categories %>
+

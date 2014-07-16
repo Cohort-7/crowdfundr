@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
 
 	def index
-		@category = Category.all
+		@categories = Category.all
+    @top_projects = Project.order(end_time: :asc).limit(5)
 	end
 
 	 #do we need this method?
