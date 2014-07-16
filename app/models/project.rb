@@ -44,6 +44,10 @@ class Project < ActiveRecord::Base
   	end
   end
 
+  def has_ended
+    end_time < Time.now
+  end
+
 protected
 
   def set_project_dates

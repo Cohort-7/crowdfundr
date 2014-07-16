@@ -1,6 +1,12 @@
 .user-project
   - @user.projects.each do |project|
-    %h3= project.title
-    %p= project.description
-    %p= project.start_time
-    %p= project.end_time
+    %h3= link_to project.title, project_path(project)
+    - if project.has_ended
+      %p #{pretty_time(@project.end_time)}
+    -else
+      %p
+        %strong Time Remaining:
+        = project.time_left
+    %p
+      %strong Description:
+      = project.description

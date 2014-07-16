@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to
+      redirect_to @user
     else
       flash.now[:alert] = "New user was not saved..."
       render :new
