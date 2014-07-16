@@ -1,0 +1,8 @@
+.nested-fields
+	.field
+		= f.label :description
+		= f.text_field :description
+	.field
+		= f.label :cost
+		= f.text_field :cost
+	= link_to_remove_association "remove reward", f
