@@ -1,11 +1,11 @@
 class Project < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   has_many :rewards, inverse_of: :project
 
   accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
 
-  delegate :first_name, :last_name, :email, to: :user, prefix: :owner
+  delegate :first_name, :last_name, :email, to: :owner, prefix: true
 
   # assign user with id 1 to project --- REMOVE WHEN INTEGRATED WITH USER
   before_validation lambda {self.user_id = 1}, on: :create # !!!!!!!!!!!!
