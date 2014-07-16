@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   	end
   end
 
-   #do we need this method?
+   
   def show
   	@category = Category.find(params[:id])
   end
