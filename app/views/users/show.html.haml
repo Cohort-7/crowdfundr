@@ -2,4 +2,15 @@
 %h1
   = @user.first_name
   = @user.last_name
+%ul
+  %li
+    %strong Member since:
+    =pretty_time(@user.created_at)
+  %li
+    %strong Total Projects:
+    =@user.projects.count
+  %li
+    %strong Total Pledges:
+    = @user.pledges.count
+
 = render 'user_projects'
