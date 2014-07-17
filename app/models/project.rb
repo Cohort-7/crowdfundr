@@ -3,6 +3,9 @@ class Project < ActiveRecord::Base
   belongs_to :category
   has_many :rewards, inverse_of: :project
 
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+
   accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
 
   delegate :first_name, :last_name, :email, to: :owner, prefix: true
