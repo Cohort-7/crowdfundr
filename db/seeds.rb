@@ -48,6 +48,7 @@ PROJECTS.times do
   rewards_num.times do |i|
   	r = Reward.new
   	r.project_id = p.id
+  	r.description = Faker::Lorem.sentence(1,true,3)
   	r.cost = (p.goal / part_of_goal * (i+1)).to_i
   	r.save(validate: false)
   end
