@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
   root 'categories#index'
-  resources :users  
-  resources :categories do
-    resources :projects
-  end
+  resources :users
+  resources :categories
+  resources :projects
 
 
   # The priority is based upon order of creation: first created -> highest priority.
