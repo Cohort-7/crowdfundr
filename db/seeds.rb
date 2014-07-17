@@ -42,6 +42,7 @@ PROJECTS.times do
   p.goal				= (rand(5..200).to_s + '000').to_i
   p.category_id = rand(1..CATEGORIES)
   p.user_id			= rand(1..USERS)
+  p.tag_list		= p.title.downcase.gsub(' ', ', ')
   p.save(validate: false)
   rewards_num 	= rand(1..5)
   part_of_goal	= rand(100..200)

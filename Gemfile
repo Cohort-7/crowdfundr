@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'acts-as-taggable-on'
 gem "paperclip", "~> 4.1"
 gem 'faker'
 gem 'haml-rails'
@@ -52,3 +53,4 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'normalize-rails'

@@ -13,6 +13,9 @@
 	%br
 	= collection_select(:project, :category_id, Category.all, :id, :name, {:prompt => "-- select category"})
 	%br
+	= f.label :tag_list, "Tags (coma separated):"
+	= f.text_field :tag_list
+	%br
 	#tasks
 		= f.fields_for :rewards, f.object.sorted_rewards do |reward|
 			= render 'reward_fields', :f => reward
