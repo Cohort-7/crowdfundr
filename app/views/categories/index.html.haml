@@ -1,0 +1,7 @@
+%select#category= render @categories
+
+- @top_projects.each do |project|
+	%p= link_to project.title, project
+	%p= image_tag project.picture.url(:thumb)
+	%p Project goal: $#{project.goal}
+	%p Status: #{time_left_or_passed(project.end_time)}
