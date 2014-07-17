@@ -32,6 +32,10 @@ class Project < ActiveRecord::Base
   	total = self.rewards.inject(0) {|t, r| t += r.pledges.count * r.cost; t}
   end
 
+  def was_funded?
+    goal < collected_money
+  end
+
   def has_ended?
     end_time < Time.now
   end
