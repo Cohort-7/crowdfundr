@@ -1,14 +1,17 @@
+= link_to "Profile", @user
 = form_for @user do |f|
   - if @user.errors.any?
     = render 'errors'
   .user-input
-    = f.label :first_name
+    = f.label :first_name, "First Name:"
     = f.text_field :first_name
   .user-input
-    = f.label :last_name
+    = f.label :last_name, "Last Name:"
     = f.text_field :last_name
   .user-input
-    = f.label :email
+    = f.label :email, "Email:"
     = f.text_field :email
   .btn-submit
     = f.submit
+
+= link_to "Delete Account", @user, method: :delete

@@ -3,19 +3,19 @@
     = render 'errors'
 
   .user-input
-    = f.label :first_name
+    = f.label :first_name, "First Name:"
     = f.text_field :first_name
   .user-input
-    = f.label :last_name
+    = f.label :last_name, "Last Name:"
     = f.text_field :last_name
   .user-input
-    = f.label :email
+    = f.label :email, "Email:"
     = f.text_field :email
   .user-input
-    = f.label :password
+    = f.label :password, "Password:"
     = f.password_field :password
   .user-input
-    = f.label :password_confirmation
+    = f.label :password_confirmation, "Password Confirmation:"
     = f.password_field :password_confirmation
   .btn-submit
     = f.submit
