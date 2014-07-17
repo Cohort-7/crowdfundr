@@ -8,7 +8,8 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
 
-  delegate :first_name, :last_name, :email, to: :owner, prefix: true
+  delegate :first_name, :last_name, :email, :full_name, to: :owner, prefix: true
+  delegate :name, to: :category, prefix: true
 
   # assign user with id 1 to project --- REMOVE WHEN INTEGRATED WITH USER
   before_validation lambda {self.user_id = 1}, on: :create # !!!!!!!!!!!!
@@ -39,7 +40,7 @@ protected
 
   def set_project_dates
   	self.start_time = Time.now
-	  self.end_time = Time.now + 2.days
+	  self.end_time = Time.now + 30.days
   end
 
 end

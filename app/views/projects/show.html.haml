@@ -4,7 +4,12 @@
 
 	= image_tag @project.picture.url(:thumb)
 
-	%h3 Project created by #{@project.owner_first_name} #{@project.owner_last_name}
+	%h3
+		Project created by
+		= link_to(@project.owner_full_name, @project.owner)
+	%p
+		%b Project category:
+		= link_to(@project.category_name, @project.category)
 
 	%p Project start date: #{pretty_time(@project.start_time)}
 	%p Project end date: #{pretty_time(@project.end_time)}
