@@ -31,26 +31,6 @@ class Project < ActiveRecord::Base
   	total = self.rewards.inject(0) {|t, r| t += r.pledges.count * r.cost; t}
   end
 
-  def time_left
-  	t = end_time - Time.now
-    if t <= 0
-      return "funding ended"
-  	elsif t < 3600
-  		return "less then 1 hour"
-  	elsif t < 86400
-  		m = (t / 60 % 60).round
-  		h = (t / 60 / 60).round
-  		return "#{h} hours #{m} minutes"
-  	elsif t < 172800
-  		m = (t / 60 % 60).round
-  		h = (t / 60 / 60 % 24).round - 1
-  		return "1 day #{h} hours #{m} minutes"
-  	else
-  		t = (t / 86400).round
-  		return "#{t} days"
-  	end
-  end
-
   def has_ended?
     end_time < Time.now
   end

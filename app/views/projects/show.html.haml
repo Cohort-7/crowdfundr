@@ -9,8 +9,8 @@
 	%p Project start date: #{pretty_time(@project.start_time)}
 	%p Project end date: #{pretty_time(@project.end_time)}
 	%p
-		Time left:
-		%b= @project.time_left
+		Status:
+		%b= time_left_or_passed(@project.end_time)
 
 	%p
 		%b Description:
