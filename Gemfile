@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'acts-as-taggable-on'
 gem "paperclip", "~> 4.1"
 gem 'faker'
 gem 'haml-rails'
