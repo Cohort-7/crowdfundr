@@ -20,6 +20,8 @@ class Project < ActiveRecord::Base
   validates :goal, numericality: { only_integer: true, greater_than: 0 }
   validates_associated :rewards
 
+  scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
+  scope :ended, -> { where('end_time < ?', Time.now) }
 
   def sorted_rewards
   	rewards.order(:cost)
@@ -31,7 +33,9 @@ class Project < ActiveRecord::Base
 
   def time_left
   	t = end_time - Time.now
-  	if t < 3600
+    if t <= 0
+      return "funding ended"
+  	elsif t < 3600
   		return "less then 1 hour"
   	elsif t < 86400
   		m = (t / 60 % 60).round
@@ -47,7 +51,7 @@ class Project < ActiveRecord::Base
   	end
   end
 
-  def has_ended
+  def has_ended?
     end_time < Time.now
   end
 
