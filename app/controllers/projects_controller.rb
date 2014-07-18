@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project
     else
-      render :new
+      render action: :new
     end
   end
 

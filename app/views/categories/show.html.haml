@@ -1,6 +1,6 @@
 %h1= @category.name
 - @category.projects.each do |project|
-	%p= image_tag project.picture.url(:thimb)
+	%p= image_tag project.picture.url(:thumb)
 	%p
 		%b= link_to(project.title, project)
 	%p= project.description
