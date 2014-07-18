@@ -23,22 +23,25 @@
 %h2 Your Pledges
 - if @user.pledges.empty?
   %p
-    %i You have not created pledges yet.
+    %i You have not pledged to any projects yet.
     = link_to "Find a project that interests you!", root_path
 
 - else
   .user-pledge
-    - @user.projects.each do |project|
-      %h3= link_to project.title, project_path(project)
-      %p Goal: #{project.goal}
-      %p Money Collected: #{project.collected_money}
-      - if project.has_ended?
+    - @user.pledges.each do |pledge|
+      %h3 $#{pledge.amount} pledge
+      %p
+        %strong
+        = link_to pledge.project.title, project_path(pledge.project)
+      %p Goal: #{ pledge.project.goal}
+      %p Money Collected: #{pledge.project.collected_money}
+      - if pledge.project.has_ended?
 
-        %p #{pretty_time(project.end_time)}
+        %p #{pretty_time(pledge.project.end_time)}
       -else
         %p
           %strong Time Remaining:
-          = time_left_or_passed(project.end_time)
+          = time_left_or_passed(pledge.project.end_time)
         %p
-          %strong %Description:
-          = project.description
+          %strong Description:
+          = pledge.project.description
