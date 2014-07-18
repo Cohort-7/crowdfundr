@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :load_current_user, only: [:edit]
+  before_action :ensure_logged_in, only: [:new, :create, :edit]
 
   def show
     @project = Project.find(params[:id])
@@ -20,6 +22,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    if @user && @user.id != @project.user_id
+      redirect_to root_path
+      flash.now[:alert] = "You do not have permission to edit this <project class=""></project>"
+    end
   end
 
   def update
