@@ -1,31 +1,32 @@
-%h2 #{@user.first_name}'s Projects
+%h2.title #{@user.first_name}'s Projects
 - if @user.projects.empty?
   %p
     %i #{@user.first_name} does not appear to have any projects at the moment...
 -else
-  .user-project
-    - @user.projects.each do |project|
-      %h3= link_to project.title, project_path(project)
-      %p Goal: #{project.goal}
-      %p Money Collected: #{project.collected_money}
-      - if project.has_ended?
-
-
-        %p #{pretty_time(project.end_time)}
-      -else
-        %p
-          %strong Time Remaining:
-          = project.time_left
-      %p
-        %strong Description:
-        = project.description
-
-      /   %p #{pretty_time(project.end_time)}
-      / -else
-      /   %p
-      /     %strong Time Remaining:
-      /     = time_left_or_passed(project.end_time)
-      / %p
-      /   %strong Description:
-      /   = project.description
+  - @user.projects.each do |project|
+    .cards
+      .card
+        .card-image
+          = image_tag project.picture.url
+        .card-header
+          = link_to project.title, project_path(project)
+        .card-copy
+          %strong Description:
+          = project.description
+        .card-stats
+          %ul
+            %li
+              #{project.goal}
+              %span Goal
+            %li
+              #{project.collected_money}
+              %span $ Raised
+            %li
+              - if project.has_ended?
+                #{pretty_time(project.end_time)}
+                %span Project End Date
+              - else
+                %strong Time Remaining:
+                = time_left_or_passed(project.end_time)
+                %span Time Left
 
