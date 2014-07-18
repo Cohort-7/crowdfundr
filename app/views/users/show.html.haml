@@ -21,11 +21,11 @@
   .content
     %h4
       = @user.email
-    %h1
-      = @user.first_name
-      = @user.last_name
     %p
-      = render 'user_projects'
+      - if current_user && current_user.id == @user.id
+        = render 'current_user_projects'
+      - else
+        = render 'user_projects'
     %button Read more
 
 .cards

@@ -14,7 +14,7 @@
       -else
         %p
           %strong Time Remaining:
-          = project.time_left
+          = time_left_or_passed(project.end_time)
       %p
         %strong Description:
         = project.description
