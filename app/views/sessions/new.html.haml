@@ -1,0 +1,11 @@
+%h1 Sign in
+%div
+  .user-input
+    = form_tag sessions_path
+    = label_tag :email, "Email:"
+  .user-input
+    = text_field_tag :email
+    = label_tag :password, "Password"
+  .user-input
+    = password_field_tag :password
+    = submit_tag "Log in"
