@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @user && @user.id != @project.user_id
       redirect_to root_path
-      flash.now[:alert] = "You do not have permission to edit this project..."
+      flash.now[:alert] = "You do not have permission to edit this <project class=""></project>"
     end
   end
 
