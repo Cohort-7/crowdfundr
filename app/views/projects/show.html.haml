@@ -1,39 +1,36 @@
-%div
+%section.zero
+	.side-image
+		.images-wrapper
+		.content
+			%h1= @project.title
+			= image_tag @project.picture.url
 
-	%h1= @project.title
-
-	= image_tag @project.picture.url(:thumb)
-
+%section.zero
 	%h3
 		Project created by
 		= link_to(@project.owner_full_name, @project.owner)
 	%p
 		%b Project category:
 		= link_to(@project.category_name, @project.category)
-
 	%p
 		%b Tags:
 		- @project.tags.each do |tag|
 			= tag.name
-
 	%p Project start date: #{pretty_time(@project.start_time)}
 	%p Project end date: #{pretty_time(@project.end_time)}
 	%p
 		Status:
 		%b= time_left_or_passed(@project.end_time)
-
 	%p
 		%b Description:
 		%br
 		= @project.description
-
 	%p
 		%b Goal:
 		$#{@project.goal}
 	%p
 		%b Collected money:
 		$#{@project.collected_money}
-
 	%div
 		%b Rewards:
 		- @project.sorted_rewards.each do |reward|
@@ -41,3 +38,38 @@
 				= reward.description
 				%b for $#{reward.cost}
 				(#{reward.backers_amount} backers)
+
+////
+
+/ %section.zero
+/ 	%h2.title #{@user.first_name}'s Projects
+/ 	- if @user.projects.empty?
+/ 		%p
+/ 			%i #{@user.first_name} does not appear to have any projects at the moment...
+/ 	-else
+/ 		- @user.projects.each do |project|
+/ 			.cards
+/ 				.card
+/ 					.card-image
+/ 					%img{alt: "", src: "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
+/ 					.card-header
+/ 						= link_to project.title, project_path(project)
+/ 					.card-copy
+/ 						%strong Description:
+/ 						= project.description
+/ 					.card-stats
+/ 						%ul
+/ 							%li
+/ 								#{project.goal}
+/ 								%span Goal
+/ 							%li
+/ 								#{project.collected_money}
+/ 								%span $ Raised
+/ 							%li
+/ 								- if project.has_ended?
+/ 									#{pretty_time(project.end_time)}
+/ 									%span Project End Date
+/ 								- else
+/ 									%strong Time Remaining:
+/ 									= project.time_left
+/ 									%span Time Left
