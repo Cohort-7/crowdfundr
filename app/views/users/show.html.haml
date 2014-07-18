@@ -23,4 +23,7 @@
       / %button Read more
 
 %section.zero
-  = render 'user_projects'
+  - if current_user && current_user.id == @user.id
+    = render 'current_user'
+  - else
+    = render 'user_projects'

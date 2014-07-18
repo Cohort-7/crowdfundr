@@ -37,21 +37,26 @@
     = link_to "Find a project that interests you!", root_path
 
 - else
-  .user-pledge
-    - @user.pledges.each do |pledge|
-      %h3 $#{pledge.amount} pledge
-      %p
-        %strong
-        = link_to pledge.project.title, project_path(pledge.project)
-      %p Goal: #{ pledge.project.goal}
-      %p Money Collected: #{pledge.project.collected_money}
-      - if pledge.project.has_ended?
-
-        %p #{pretty_time(pledge.project.end_time)}
-      -else
-        %p
-          %strong Time Remaining:
-          = time_left_or_passed(pledge.project.end_time)
-        %p
-          %strong Description:
-          = pledge.project.description
+  - @user.pledges.each do |pledge|
+    .cards
+      .card
+        .card-header
+          %h3 $#{pledge.amount} pledge
+          %p
+            %strong
+            = link_to pledge.project.title, project_path(pledge.project)
+        .card-stats
+          %ul
+            %li
+              #{ pledge.project.goal}
+              %span Goal
+            %li
+              #{pledge.project.collected_money}
+              %span $ Raised
+            %li
+              - if pledge.project.has_ended?
+                #{time_left_or_passed(pledge.project.end_time)}
+                %span Project End Date
+              -else
+                = time_left_or_passed(pledge.project.end_time)
+                %span Time Left
