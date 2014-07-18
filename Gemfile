@@ -54,3 +54,4 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 gem 'normalize-rails'
+
