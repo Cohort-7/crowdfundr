@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :ensure_logged_in, only: [:create, :edit, :update, :destroy]
+  before_action :load_current_user, only: [:edit, :update, :destroy]
+
+  # before_action :authenticate_user, only: [:edit, :update, :destroy]
   def index
     @users = User.all
   end
@@ -24,12 +26,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    unless @user
+      redirect_to root_path
+    end
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to @user, notice: "Changes saved"
     else
@@ -39,15 +41,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    #Load user
     @user.destroy
     redirect_to root
   end
 
-  private
-  def authenticate_user
-
+private
+  def load_current_user
+    @user = current_user
   end
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
