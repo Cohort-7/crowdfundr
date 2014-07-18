@@ -1,4 +1,5 @@
 class Pledge < ActiveRecord::Base
+	# max_paginates_per 100
   belongs_to :user
   belongs_to :reward
 

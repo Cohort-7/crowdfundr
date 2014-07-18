@@ -1,7 +1,11 @@
 %section.zero
-  %select#category= render @categories
+  %select#category
+
+  - options = render @categories
+  = select_tag("category", options.html_safe, :prompt => "Please select a Category")
+
   - @top_projects.each do |project|
     %p= link_to project.title, project
-    %p= image_tag project.picture.url(:medium)
+    %p= image_tag project.picture.url(:thumb)
     %p Project goal: $#{project.goal}
     %p Status: #{time_left_or_passed(project.end_time)}
