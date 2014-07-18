@@ -8,22 +8,23 @@
         = @user.first_name
         = @user.last_name
         = image_tag gravatarify_url(@user)
-      %p
-        = link_to "Account Settings", edit_user_path
-        %ul
-        %li
-          %strong Member since:
-          =pretty_time(@user.created_at)
-        %li
-          %strong Total Projects:
-          =@user.projects.count
-        %li
-          %strong Total Pledges:
-          = @user.pledges.count
+      - if owner?(@user)
+        %p
+          = link_to "Account Settings", edit_user_path
+      %ul
+      %li
+        %strong Member since:
+        =pretty_time(@user.created_at)
+      %li
+        %strong Total Projects:
+        =@user.projects.count
+      %li
+        %strong Total Pledges:
+        = @user.pledges.count
       / %button Read more
 
 %section.zero
-  - if current_user && current_user.id == @user.id
-    = render 'current_user'
+  - if owner?(@user)
+    =render 'current_user'
   - else
-    = render 'user_projects'
+    =render 'user_projects'
