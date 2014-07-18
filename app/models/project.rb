@@ -25,7 +25,7 @@ class Project < ActiveRecord::Base
   validates :goal, numericality: { only_integer: true, greater_than: 0 }
   validates_associated :rewards
 
-  # scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
+  scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
   scope :ended, -> { where('end_time < ?', Time.now) }
   scope :not_ended, -> { where('end_time > ?', Time.now) }
 
@@ -43,10 +43,6 @@ class Project < ActiveRecord::Base
 
   def has_ended?
     end_time < Time.now
-  end
-
-  def self.test
-    Project.find_by_sql('select distinct(p.id) from projects p, rewards r where r.project_id = p.id;')
   end
 
 protected

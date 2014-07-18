@@ -41,3 +41,22 @@
 				= reward.description
 				%b for $#{reward.cost}
 				(#{reward.backers_amount} backers)
+
+%div
+	%h2 Comments
+	- @project.comments.each do |comment|
+		%p
+			= comment.text
+
+	= form_for [@project, @project.comments.new] do |f|
+		%p
+			= f.label :text, "Leave comment:"
+			= f.text_area :text
+		%p
+			= f.submit
+
+
+
+
+
+
