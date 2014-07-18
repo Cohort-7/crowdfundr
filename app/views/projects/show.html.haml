@@ -47,13 +47,17 @@
 	- @project.comments.each do |comment|
 		%p
 			= comment.text
+			%i by #{comment.user.full_name} on #{pretty_time(comment.created_at)}
 
-	= form_for [@project, @project.comments.new] do |f|
-		%p
-			= f.label :text, "Leave comment:"
-			= f.text_area :text
-		%p
-			= f.submit
+	- if current_user
+		= form_for [@project, @project.comments.new] do |f|
+			%p
+				= f.label :text, "Leave comment:"
+				= f.text_area :text
+			%p
+				= f.submit
+	- else
+		%p Log In to leave a comment
 
 
 
