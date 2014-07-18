@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def load_current_user
+    @user = current_user
+  end
 end
