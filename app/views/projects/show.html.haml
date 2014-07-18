@@ -1,39 +1,36 @@
-%div
+%section.zero
+	.side-image
+		.images-wrapper
+		.content
+			%h1= @project.title
+			= image_tag @project.picture.url
 
-	%h1= @project.title
-
-	= image_tag @project.picture.url(:thumb)
-
+%section.zero
 	%h3
 		Project created by
 		= link_to(@project.owner_full_name, @project.owner)
 	%p
 		%b Project category:
 		= link_to(@project.category_name, @project.category)
-
 	%p
 		%b Tags:
 		- @project.tags.each do |tag|
 			= tag.name
-
 	%p Project start date: #{pretty_time(@project.start_time)}
 	%p Project end date: #{pretty_time(@project.end_time)}
 	%p
 		Status:
 		%b= time_left_or_passed(@project.end_time)
-
 	%p
 		%b Description:
 		%br
 		= @project.description
-
 	%p
 		%b Goal:
 		$#{@project.goal}
 	%p
 		%b Collected money:
 		$#{@project.collected_money}
-
 	%div
 		%b Rewards:
 		- @project.sorted_rewards.each do |reward|
@@ -58,9 +55,3 @@
 				= f.submit
 	- else
 		%p Log In to leave a comment
-
-
-
-
-
-

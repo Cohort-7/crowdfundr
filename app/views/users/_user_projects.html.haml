@@ -10,12 +10,22 @@
       %p Money Collected: #{project.collected_money}
       - if project.has_ended?
 
+
         %p #{pretty_time(project.end_time)}
       -else
         %p
           %strong Time Remaining:
-          = time_left_or_passed(project.end_time)
+          = project.time_left
       %p
         %strong Description:
         = project.description
+
+      /   %p #{pretty_time(project.end_time)}
+      / -else
+      /   %p
+      /     %strong Time Remaining:
+      /     = time_left_or_passed(project.end_time)
+      / %p
+      /   %strong Description:
+      /   = project.description
 
