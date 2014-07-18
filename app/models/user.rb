@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :pledges
   has_many :projects
-  has_many :profile_comments, class_name: 'Comment', as: :commentable # comments on user profile
+  has_many :comments, class_name: 'Comment', as: :commentable # comments on user profile
   has_many :own_comments, class_name: 'Comment' # user own comments
 
   has_secure_password

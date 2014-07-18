@@ -54,3 +54,20 @@
                   %strong Time Remaining:
                   = project.time_left
                   %span Time Left
+
+%section.zero
+  %h2 Comments
+  - @user.comments.each do |comment|
+    %p.comment= comment.text
+    %p{style:"text-align:right"}
+      %i by #{comment.user.full_name} at #{pretty_time(comment.created_at)}
+
+  - if current_user
+    = form_for [@user, @user.comments.new] do |f|
+      %p
+        = f.label :text, "Leave comment:"
+        = f.text_area :text
+      %p
+        = f.submit
+  - else
+    %p Log In to leave a comment
