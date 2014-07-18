@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
   var menu = $('.centered-navigation-menu');
   var menuToggle = $('.centered-navigation-menu-button');
   var signUp = $('.sign-up');
@@ -30,3 +30,4 @@ $(document).ready(function() {
     });
   });
 });
+ 

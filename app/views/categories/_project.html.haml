@@ -1,0 +1,11 @@
+%p
+	= image_tag project.picture.url(:thumb)
+%p
+	%b= link_to(project.title, project)
+%p= project.description
+%p
+	%b Goal:
+	$#{project.goal}
+%p
+	%b Status:
+	= time_left_or_passed(project.end_time)

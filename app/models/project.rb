@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+
+  # max_paginates_per 100
+  
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   has_many :rewards, inverse_of: :project

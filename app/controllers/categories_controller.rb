@@ -1,8 +1,12 @@
-class CategoriesController < ApplicationController
+  class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
     @top_projects = Project.order(end_time: :asc).limit(5)
+    # respond_to do |format|
+    #   format.js # allows the controller to respond to Javascript
+    #   format.html
+    # end
 	end
 
 	 #do we need this method?
@@ -23,6 +27,12 @@ class CategoriesController < ApplicationController
    
   def show
   	@category = Category.find(params[:id])
+    @projects = @category.projects.page(params[:page])
+    
+    respond_to do |format|
+      format.js # allows the controller to respond to Javascript
+      format.html
+    end
   end
 
   private
