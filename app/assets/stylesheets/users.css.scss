@@ -78,8 +78,18 @@ h2.title {
 }
 
 .cards {
-  @include clearfix;
+  // @include clearfix;
   @include span-columns(6);
+
+}
+
+.cards.pro {
+  // @include clearfix;
+  @include span-columns(5);
+  margin-right: 4%;
+  margin-left: 5%;
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .card {
@@ -103,8 +113,6 @@ h2.title {
 
   @include media($large-screen) {
     @include omega(3n);
-
-  // @include span-columns(5);
   }
 
   .card-image {

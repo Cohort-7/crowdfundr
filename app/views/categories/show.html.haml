@@ -1,12 +1,33 @@
-%h1= @category.name
-- @category.projects.each do |project|
-	%p= image_tag project.picture.url(:medium)
-	%p
-		%b= link_to(project.title, project)
-	%p= project.description
-	%p
-		%b Goal:
-		$#{project.goal}
-	%p
-		%b Status:
-		= time_left_or_passed(project.end_time)
+%section.zero
+	%h1= @category.name
+	- @category.projects.each do |project|
+		.cards.pro
+			.card
+				.card-image
+					= image_tag project.picture.url
+				.card-header
+					= link_to(project.title, project)
+				.card-copy
+					%strong Description:
+					= project.description
+				.card-stats
+					%ul
+						%li
+							#{project.goal}
+							%span Goal
+						%li
+							= time_left_or_passed(project.end_time)
+							%span Status
+
+/ %h1= @category.name
+/ - @category.projects.each do |project|
+/ 	%p= image_tag project.picture.url(:medium)
+/ 	%p
+/ 		%b= link_to(project.title, project)
+/ 	%p= project.description
+/ 	%p
+/ 		%b Goal:
+/ 		$#{project.goal}
+/ 	%p
+/ 		%b Status:
+/ 		= time_left_or_passed(project.end_time)
