@@ -17,10 +17,10 @@
         .card-stats
           %ul
             %li
-              #{project.goal}
+              $#{project.goal}
               %span Goal
             %li
-              #{project.collected_money}
+              $#{project.collected_money}
               %span $ Raised
             %li
               - if project.has_ended?
@@ -48,10 +48,10 @@
         .card-stats
           %ul
             %li
-              #{ pledge.project.goal}
+              $#{ pledge.project.goal}
               %span Goal
             %li
-              #{pledge.project.collected_money}
+              $#{pledge.project.collected_money}
               %span $ Raised
             %li
               - if pledge.project.has_ended?
