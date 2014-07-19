@@ -4,6 +4,7 @@ class Pledge < ActiveRecord::Base
 
   delegate :project, :to => :reward, allow_nil: true
 
-  before_save :increment_project_collected_money_cache
+  validates :user, presence: true
+  validates :reward, presence: true
 
 end

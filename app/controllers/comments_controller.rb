@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
 		@comment = @commentable.comments.new(text: params[:comment][:text])
 		@comment.user = current_user
 		@comment.save
-		# pry
 		respond_to do |format|
 			format.html { redirect_to @commentable }
 			format.js

@@ -22,6 +22,7 @@ $(document).on('page:load ready', function() {
   var signUp = $('.sign-up');
 
   $('#new_comment').submit(ajaxComment);
+  $('.create-pledge').submit(createPledge);
 
   $(menuToggle).on('click', function(e) {
     e.preventDefault();
