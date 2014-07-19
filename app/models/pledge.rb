@@ -4,4 +4,7 @@ class Pledge < ActiveRecord::Base
 
   delegate :project, :to => :reward, allow_nil: true
 
+  validates :user, presence: true
+  validates :reward, presence: true
+
 end

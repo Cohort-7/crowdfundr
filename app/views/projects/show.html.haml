@@ -40,8 +40,8 @@
 				(
 				%span{id: "reward-#{reward.id}-backers"}= reward.backers_amount
 				backers)
-				-
-				%b= button_to 'Pledge', pledges_path(reward_id: reward), method: :post, form_class: 'create-pledge'
+				- if current_user
+					%b= button_to 'Pledge', pledges_path(reward_id: reward), method: :post, form_class: 'create-pledge'
 
 %section.zero#comments
 	%h2 Comments
