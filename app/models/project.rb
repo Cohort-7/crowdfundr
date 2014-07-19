@@ -15,8 +15,6 @@ class Project < ActiveRecord::Base
   delegate :first_name, :last_name, :email, :full_name, to: :owner, prefix: true
   delegate :name, to: :category, prefix: true
 
-
-
   before_validation :set_project_dates, on: :create
 
   validates :title, :description, :goal, presence: true
