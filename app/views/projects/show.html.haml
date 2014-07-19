@@ -38,3 +38,18 @@
 				= reward.description
 				%b for $#{reward.cost}
 				(#{reward.backers_amount} backers)
+
+%section.zero#comments
+	%h2 Comments
+	= render @project.comments
+
+%section.zero
+	- if current_user
+		= form_for [@project, @project.comments.new] do |f|
+			%p
+				= f.label :text, "Leave comment:"
+				= f.text_area :text
+			%p
+				= f.submit
+	- else
+		%p Log In to leave a comment

@@ -8,49 +8,38 @@
         = @user.first_name
         = @user.last_name
         = image_tag gravatarify_url(@user)
-      %p
-        = link_to "Account Settings", edit_user_path
-        %ul
-        %li
-          %strong Member since:
-          =pretty_time(@user.created_at)
-        %li
-          %strong Total Projects:
-          =@user.projects.count
-        %li
-          %strong Total Pledges:
-          = @user.pledges.count
+      - if owner?(@user)
+        %p
+          = link_to "Account Settings", edit_user_path
+      %ul
+      %li
+        %strong Member since:
+        =pretty_time(@user.created_at)
+      %li
+        %strong Total Projects:
+        =@user.projects.count
+      %li
+        %strong Total Pledges:
+        = @user.pledges.count
       / %button Read more
 
 %section.zero
-  %h2.title #{@user.first_name}'s Projects
-  - if @user.projects.empty?
-    %p
-      %i #{@user.first_name} does not appear to have any projects at the moment...
-  -else
-    - @user.projects.each do |project|
-      .cards
-        .card
-          .card-image
-            = image_tag project.picture.url
-          .card-header
-            = link_to project.title, project_path(project)
-          .card-copy
-            %strong Description:
-            = project.description
-          .card-stats
-            %ul
-              %li
-                #{project.goal}
-                %span Goal
-              %li
-                #{project.collected_money}
-                %span $ Raised
-              %li
-                - if project.has_ended?
-                  #{pretty_time(project.end_time)}
-                  %span Project End Date
-                - else
-                  %strong Time Remaining:
-                  = project.time_left
-                  %span Time Left
+  - if owner?(@user)
+    =render 'current_user'
+  - else
+    =render 'user_projects'
+
+%section.zero#comments
+  %h2 Comments
+  = render @user.comments
+
+%section.zero
+  - if current_user
+    = form_for [@user, @user.comments.new] do |f|
+      %p
+        = f.label :text, "Leave comment:"
+        = f.text_area :text
+      %p
+        = f.submit
+  - else
+    %p Log In to leave a comment

@@ -1,0 +1,4 @@
+.comment
+	%p= comment.text
+	%p{style:"text-align:right"}
+		%i by #{comment.user.full_name} at #{pretty_time(comment.created_at)}

@@ -4,4 +4,8 @@ module UsersHelper
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
+
+  def owner?(user)
+    current_user && current_user.id == user.id
+  end
 end

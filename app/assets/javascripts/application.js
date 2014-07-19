@@ -16,10 +16,12 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('page:load ready', function() {
   var menu = $('.centered-navigation-menu');
   var menuToggle = $('.centered-navigation-menu-button');
   var signUp = $('.sign-up');
+
+  $('#new_comment').submit(ajaxComment);
 
   $(menuToggle).on('click', function(e) {
     e.preventDefault();
