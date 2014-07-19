@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
   scope :ended, -> { where('end_time < ?', Time.now) }
   scope :not_ended, -> { where('end_time > ?', Time.now) }
-
+  
   def sorted_rewards
   	rewards.order(:cost)
   end
