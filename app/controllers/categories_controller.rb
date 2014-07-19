@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
     else
       Project.order(end_time: :asc).limit(6)
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	 #do we need this method?

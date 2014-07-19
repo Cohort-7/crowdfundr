@@ -3,10 +3,10 @@ $(document).ready(function(){
 		location.href = $(this).val()
 	});
 
-  // $('#search-form').on('submit ajax:beforeSend', function(ev){
-  //   ev.preventDefatult();
-  //   $('#search-submit').attr('disabled', 'disabled');
+  $('#search-form').on('submit', function(ev){
+    ev.preventDefault();
 
-  //   $.getScript('categories/index')
-  // });
+    var searchValue = $('#search-input').val();
+    $.getScript('categories?search=' + searchValue);
+  });
 });
