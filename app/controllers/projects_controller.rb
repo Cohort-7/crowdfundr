@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :load_current_user, only: [:edit]
+  before_action :load_current_user, only: [:create, :edit]
   before_action :ensure_logged_in, only: [:new, :create, :edit]
 
   def show
@@ -12,11 +12,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project
+    @project.user_id = @user.id
     if @project.save
       redirect_to @project
     else
-      render :new
+      render action: :new
     end
   end
 

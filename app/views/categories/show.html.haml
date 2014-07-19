@@ -1,7 +1,26 @@
 
 %h1= @category.name
+%p
+	%b Total Projects:
+	= @category.projects.count
+
+%p
+	%b Projects successfully raised required amount:
+	= @category.projects.funded.count
+
+	%p
+		%b Projects passed end date:
+		= @category.projects.ended.count
+
+	%p
+		%b Total money raised for this category:
+		= @category.total_money
+
+	
 
 #projects
 	= render(:partial => "project", :collection => @projects)
+
+
 
 = paginate @projects 

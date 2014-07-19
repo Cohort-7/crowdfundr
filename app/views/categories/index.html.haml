@@ -1,5 +1,5 @@
 %section.zero
-  %select#category
+  / %select#category
 
   - options = render @categories
   = select_tag("category", options.html_safe, :prompt => "Please select a Category")

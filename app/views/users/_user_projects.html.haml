@@ -19,11 +19,11 @@
               #{project.goal}
               %span Goal
             %li
-              #{project.collected_money}
+              $#{project.collected_money}
               %span $ Raised
             %li
               - if project.has_ended?
-                #{pretty_time(project.end_time)}
+                ${pretty_time(project.end_time)}
                 %span Project End Date
               - else
                 %strong Time Remaining:

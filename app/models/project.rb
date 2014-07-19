@@ -5,7 +5,8 @@ class Project < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   has_many :rewards, inverse_of: :project
-
+  has_many :comments, as: :commentable
+  has_many :pledges, through: :rewards
 
   acts_as_taggable
 
@@ -17,8 +18,7 @@ class Project < ActiveRecord::Base
   delegate :first_name, :last_name, :email, :full_name, to: :owner, prefix: true
   delegate :name, to: :category, prefix: true
 
-  # assign user with id 1 to project --- REMOVE WHEN INTEGRATED WITH USER
-  before_validation lambda {self.user_id = 1}, on: :create # !!!!!!!!!!!!
+
 
   before_validation :set_project_dates, on: :create
 
@@ -45,6 +45,10 @@ class Project < ActiveRecord::Base
 
   def has_ended?
     end_time < Time.now
+  end
+
+  def total_people
+    self.rewards.inject(0) {|t, r| t += r.backers_amount; t }
   end
 
 protected
