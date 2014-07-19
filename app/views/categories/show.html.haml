@@ -9,7 +9,7 @@
 					= link_to(project.title, project)
 				.card-copy
 					%strong Description:
-					= project.description.truncate(project.description.to_i, length: 100)
+					= project.description.truncate(80, omission: '... (continued)')
 				.card-stats
 					%ul
 						%li
