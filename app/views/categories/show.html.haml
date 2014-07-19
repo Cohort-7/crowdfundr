@@ -1,4 +1,4 @@
-%section.zero
+%section.categoriesshow
 	%h1= @category.name
 	- @category.projects.each do |project|
 		.cards.pro
@@ -18,16 +18,3 @@
 						%li
 							= time_left_or_passed(project.end_time)
 							%span Status
-
-/ %h1= @category.name
-/ - @category.projects.each do |project|
-/ 	%p= image_tag project.picture.url(:medium)
-/ 	%p
-/ 		%b= link_to(project.title, project)
-/ 	%p= project.description
-/ 	%p
-/ 		%b Goal:
-/ 		$#{project.goal}
-/ 	%p
-/ 		%b Status:
-/ 		= time_left_or_passed(project.end_time)

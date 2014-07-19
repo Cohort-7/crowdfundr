@@ -1,7 +1,6 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 $side-image-background-top: #B5EBEB;
 $side-image-background-bottom: #5DAC5D;
 $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, .8), 30);
@@ -9,6 +8,24 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
 section.zero {
   @include outer-container;
   margin-bottom: 25px;
+}
+
+section.one {
+  @include outer-container;
+  margin-bottom: 25px;
+  width: 55%;
+}
+
+section.two {
+  @include outer-container;
+  margin-bottom: 25px;
+}
+
+section.categoriesshow {
+  @include outer-container;
+  width: 81.4%;
+  margin-right: 3.2%;
+  margin-top: 2%;
 }
 
 h2.title {
@@ -80,16 +97,16 @@ h2.title {
 .cards {
   // @include clearfix;
   @include span-columns(6);
-
 }
 
 .cards.pro {
   // @include clearfix;
   @include span-columns(5);
-  margin-right: 4%;
-  margin-left: 5%;
+  // margin-right: 4%;
+  // margin-left: 4%;
   margin-bottom: 2%;
-  margin-top: 2%;
+  margin-right: 4.4%;
+  margin-top: 0;
 }
 
 .card {

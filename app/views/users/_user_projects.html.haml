@@ -9,8 +9,6 @@
       %p Goal: #{project.goal}
       %p Money Collected: #{project.collected_money}
       - if project.has_ended?
-
-
         %p #{pretty_time(project.end_time)}
       -else
         %p
