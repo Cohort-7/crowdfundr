@@ -28,3 +28,18 @@
     =render 'current_user'
   - else
     =render 'user_projects'
+
+%section.zero#comments
+  %h2 Comments
+  = render @user.comments
+
+%section.zero
+  - if current_user
+    = form_for [@user, @user.comments.new] do |f|
+      %p
+        = f.label :text, "Leave comment:"
+        = f.text_area :text
+      %p
+        = f.submit
+  - else
+    %p Log In to leave a comment

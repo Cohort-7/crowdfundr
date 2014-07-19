@@ -39,37 +39,17 @@
 				%b for $#{reward.cost}
 				(#{reward.backers_amount} backers)
 
-////
+%section.zero#comments
+	%h2 Comments
+	= render @project.comments
 
-/ %section.zero
-/ 	%h2.title #{@user.first_name}'s Projects
-/ 	- if @user.projects.empty?
-/ 		%p
-/ 			%i #{@user.first_name} does not appear to have any projects at the moment...
-/ 	-else
-/ 		- @user.projects.each do |project|
-/ 			.cards
-/ 				.card
-/ 					.card-image
-/ 					%img{alt: "", src: "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
-/ 					.card-header
-/ 						= link_to project.title, project_path(project)
-/ 					.card-copy
-/ 						%strong Description:
-/ 						= project.description
-/ 					.card-stats
-/ 						%ul
-/ 							%li
-/ 								#{project.goal}
-/ 								%span Goal
-/ 							%li
-/ 								#{project.collected_money}
-/ 								%span $ Raised
-/ 							%li
-/ 								- if project.has_ended?
-/ 									#{pretty_time(project.end_time)}
-/ 									%span Project End Date
-/ 								- else
-/ 									%strong Time Remaining:
-/ 									= project.time_left
-/ 									%span Time Left
+%section.zero
+	- if current_user
+		= form_for [@project, @project.comments.new] do |f|
+			%p
+				= f.label :text, "Leave comment:"
+				= f.text_area :text
+			%p
+				= f.submit
+	- else
+		%p Log In to leave a comment
