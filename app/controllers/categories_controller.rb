@@ -2,7 +2,12 @@ class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
-    @projects = Project.order(end_time: :asc).limit(6)
+
+    @projects = if params[:search]
+      Project.tagged_with(["#{params[:search].strip.gsub(/\s/, ", ")}"], any: true, wild: true)
+    else
+      Project.order(end_time: :asc).limit(6)
+    end
 	end
 
 	 #do we need this method?
