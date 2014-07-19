@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
+
   root 'categories#index'
+  get 'search/:action' => 'searches#:action'
   resources :users
   resources :categories
   resources :projects

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
-    @top_projects = Project.order(end_time: :asc).limit(6)
+    @projects = Project.order(end_time: :asc).limit(6)
 	end
 
 	 #do we need this method?

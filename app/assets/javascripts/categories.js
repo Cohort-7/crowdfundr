@@ -3,7 +3,9 @@ $(document).ready(function(){
 		location.href = $(this).val()
 	});
 
-  $('#search').on('submit', function(ev){
+  $('#search-form').on('ajax:beforeSend', function(ev){
     ev.preventDefatult();
+    $('')
+    $.getScript('searches/index')
   });
 });
