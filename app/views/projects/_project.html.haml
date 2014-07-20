@@ -1,0 +1,14 @@
+.cards.pro
+  .card
+    .card-image
+      = image_tag project.picture.url
+    .card-header
+      = link_to(project.title, project)
+    .card-stats
+      %ul
+        %li
+          #{project.goal}
+          %span Goal
+        %li
+          = time_left_or_passed(project.end_time)
+          %span Status
