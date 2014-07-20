@@ -20,6 +20,7 @@ $(document).ready(function() {
   var menu = $('.centered-navigation-menu');
   var menuToggle = $('.centered-navigation-menu-button');
   var signUp = $('.sign-up');
+  $('#search-form').on('submit', ajaxSearch)
 
   $(menuToggle).on('click', function(e) {
     e.preventDefault();
