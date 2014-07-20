@@ -2,12 +2,13 @@
   .side-image
     .images-wrapper
     .content
-      %h4
-        = @user.email
       %h1
+        = image_tag gravatarify_url(@user)
+        %br
         = @user.first_name
         = @user.last_name
-        = image_tag gravatarify_url(@user)
+      %h4
+        = @user.email
       - if owner?(@user)
         %p
           = link_to "Account Settings", edit_user_path
