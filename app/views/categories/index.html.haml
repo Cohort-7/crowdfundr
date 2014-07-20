@@ -9,3 +9,7 @@
     %p= image_tag project.picture.url(:thumb)
     %p Project goal: $#{project.goal}
     %p Status: #{time_left_or_passed(project.end_time)}
+  - array = []  
+  - @categories.each do |category|
+    = array.push(category.total_money)
+    / = (array-1).inject(:+)

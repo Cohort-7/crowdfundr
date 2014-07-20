@@ -6,10 +6,6 @@ class Category < ActiveRecord::Base
 		self.projects.inject(0) {|t, p| t += p.collected_money; t }
 	end
 
-	# def total_money_raised
-	# 	categories.inject(0) {|t, c| t += c.collected_money; t}
-	# end
-
 end
 
 	# total = 0
