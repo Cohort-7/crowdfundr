@@ -1,17 +1,12 @@
-%section.categoriesshow
-  %h1 Top 6 Projects
+%section.one
+  %br
   #search
     = render 'taggings_search'
   - options =render @categories
+  %br
   = select_tag("category", options.html_safe, :prompt => "Please select a Category")
+  %br
+%section.categoriesshow
   #projects
-    = render @projects
-
-
-
-
-
-
-
-
-
+  %h1 Top 6 HipStarter Projects
+  = render @projects
