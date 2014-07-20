@@ -25,6 +25,12 @@
 		%b Description:
 		%br
 		= @project.description
+
+	- if @project.was_funded?
+		%b Project Succeeded
+	- elsif @project.has_ended?
+		%b Project Failed
+
 	%p
 		%b Goal:
 		$#{@project.goal}
