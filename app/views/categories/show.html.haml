@@ -1,16 +1,17 @@
 %section.categoriesshow
 	%h1.title= @category.name
-	%p Total Projects:
-	= @category.projects.count
 	%p
-		%b Projects successfully raised required amount:
-		= @category.projects.funded.count
+		Total Projects:
+		%b= @category.projects.count
+	%p
+		Projects successfully raised required amount:
+		%b= @category.projects.funded.count
 		%p
-			%b Projects passed end date:
-			= @category.projects.ended.count
+			Projects passed end date:
+			%b= @category.projects.ended.count
 		%p
-			%b Total money raised for this category:
-			= @category.total_money
+			Total money raised for this category:
+			%b= @category.total_money
 
 		#projects
 			= render(:partial => "project", :collection => @projects)
