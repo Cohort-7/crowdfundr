@@ -1,4 +1,4 @@
-%h2 Your Projects
+%h2.title Your Projects
 - if @user.projects.empty?
   %p
     %i You have not created any projects yet.
@@ -13,7 +13,7 @@
           = link_to project.title, project_path(project)
         .card-copy
           %strong Description:
-          = project.description
+          = project.description.truncate(160, omission: '... (continued)')
         .card-stats
           %ul
             %li
@@ -30,7 +30,8 @@
                 %strong Time Remaining:
                 = time_left_or_passed(project.end_time)
                 %span Time Left
-%h2 Your Pledges
+%section.zero
+%h2.title Your Pledges
 - if @user.pledges.empty?
   %p
     %i You have not pledged to any projects yet.
