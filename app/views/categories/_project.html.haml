@@ -1,11 +1,17 @@
-%p
-	= image_tag project.picture.url(:thumb)
-%p
-	%b= link_to(project.title, project)
-%p= project.description
-%p
-	%b Goal:
-	$#{project.goal}
-%p
-	%b Status:
-	= time_left_or_passed(project.end_time)
+.cards.pro
+  .card
+    .card-image
+      = image_tag project.picture.url
+    .card-header
+      = link_to(project.title, project)
+    .card-copy
+      %strong Description:
+      = project.description.truncate(80, omission: '... (continued)')
+    .card-stats
+      %ul
+        %li
+          $#{project.goal}
+          %span Goal
+        %li
+          = time_left_or_passed(project.end_time)
+          %span Status
