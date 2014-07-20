@@ -30,7 +30,9 @@
 </header>
 
 <body>
-
+<% flash.each do |key, value| %>
+  <div class="<%= key %>"><%= value %></div>
+<% end %>
 <%= yield %>
 
 </body>
