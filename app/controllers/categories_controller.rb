@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
-    sleep(2)
     @projects = if params[:search]
       Project.tagged_with(["#{params[:search].strip.gsub(/\s/, ", ")}"], any: true, wild: true)
     else

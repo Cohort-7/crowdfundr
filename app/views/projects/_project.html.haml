@@ -1,0 +1,4 @@
+%p= link_to project.title, project_path(project)
+%p= image_tag project.picture.url(:medium)
+%p Project goal: $#{project.goal}
+%p Status: #{time_left_or_passed(project.end_time)}
