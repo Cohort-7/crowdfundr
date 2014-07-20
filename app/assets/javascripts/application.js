@@ -20,6 +20,7 @@ $(document).on('page:load ready', function() {
   var menu = $('.centered-navigation-menu');
   var menuToggle = $('.centered-navigation-menu-button');
   var signUp = $('.sign-up');
+  $('#search-form').on('submit', ajaxSearch)
 
   $('#new_comment').submit(ajaxComment);
   $('.create-pledge').submit(createPledge);

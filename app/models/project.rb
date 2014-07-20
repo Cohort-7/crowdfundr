@@ -1,11 +1,14 @@
 class Project < ActiveRecord::Base
+
+  # max_paginates_per 100
+  
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   has_many :rewards, inverse_of: :project
   has_many :comments, as: :commentable
   has_many :pledges, through: :rewards
 
-  acts_as_taggable
+  acts_as_taggable_on :tags
 
   has_attached_file :picture, :styles => {:medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://placehold.it/100x100"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
@@ -25,7 +28,7 @@ class Project < ActiveRecord::Base
   scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
   scope :ended, -> { where('end_time < ?', Time.now) }
   scope :not_ended, -> { where('end_time > ?', Time.now) }
-
+  
   def sorted_rewards
   	rewards.order(:cost)
   end
