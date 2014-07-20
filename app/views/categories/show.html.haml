@@ -1,20 +1,46 @@
-%section.categoriesshow
-	%h1= @category.name
-	- @category.projects.each do |project|
-		.cards.pro
-			.card
-				.card-image
-					= image_tag project.picture.url
-				.card-header
-					= link_to(project.title, project)
-				.card-copy
-					%strong Description:
-					= project.description.truncate(80, omission: '... (continued)')
-				.card-stats
-					%ul
-						%li
-							#{project.goal}
-							%span Goal
-						%li
-							= time_left_or_passed(project.end_time)
-							%span Status
+/ <<<<<<< HEAD
+
+%h1= @category.name
+
+%p
+	%b Total Projects:
+	= @category.projects.count
+
+%p
+	%b Projects successfully raised required amount:
+	= @category.projects.funded.count
+
+	%p
+		%b Projects passed end date:
+		= @category.projects.ended.count
+
+	%p
+		%b Total money raised for this category:
+		= @category.total_money
+
+#projects
+	= render(:partial => "project", :collection => @projects)
+
+= paginate @projects 
+/ =======
+/ %section.categoriesshow
+/ 	%h1= @category.name
+/ 	- @category.projects.each do |project|
+/ 		.cards.pro
+/ 			.card
+/ 				.card-image
+/ 					= image_tag project.picture.url
+/ 				.card-header
+/ 					= link_to(project.title, project)
+/ 				.card-copy
+/ 					%strong Description:
+/ 					= project.description.truncate(80, omission: '... (continued)')
+/ 				.card-stats
+/ 					%ul
+/ 						%li
+/ 							#{project.goal}
+/ 							%span Goal
+/ 						%li
+/ 							= time_left_or_passed(project.end_time)
+/ 							%span Status
+/ >>>>>>> 66c8c64eb7ae4da9f78df82753cf8fa6d53fac4a

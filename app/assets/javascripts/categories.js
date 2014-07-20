@@ -3,7 +3,6 @@ $(document).on('ready page: load', function(){
 		location.href = $(this).val()
 	});
 });
-
 function ajaxSearch(ev){
   ev.preventDefault();
   $('#search-submit').val('Searching...').attr('disabled', 'dsiabled');

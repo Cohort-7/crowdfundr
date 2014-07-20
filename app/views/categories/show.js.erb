@@ -1,0 +1,3 @@
+$('#projects').append('<%= j render(:partial => "project", :collection => @projects) %>');
+
+$('.pagination').replaceWith('<%= j paginate(@projects) %>');

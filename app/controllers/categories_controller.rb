@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+  class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
@@ -32,6 +32,12 @@ class CategoriesController < ApplicationController
 
   def show
   	@category = Category.find(params[:id])
+    @projects = @category.projects.page(params[:page])
+
+    respond_to do |format|
+      format.js # allows the controller to respond to Javascript
+      format.html
+    end
   end
 
   private

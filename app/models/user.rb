@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  # max_paginates_per 100
+  
   has_many :pledges
   has_many :projects
   has_many :comments, class_name: 'Comment', as: :commentable # comments on user profile

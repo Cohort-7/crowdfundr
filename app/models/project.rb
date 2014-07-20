@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+
+  # max_paginates_per 100
+  
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   has_many :rewards, inverse_of: :project
@@ -25,7 +28,7 @@ class Project < ActiveRecord::Base
   scope :funded, -> { ended.select {|p| p.goal <= p.collected_money} }
   scope :ended, -> { where('end_time < ?', Time.now) }
   scope :not_ended, -> { where('end_time > ?', Time.now) }
-
+  
   def sorted_rewards
   	rewards.order(:cost)
   end
