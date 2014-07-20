@@ -1,4 +1,4 @@
-$(document).on('ready page: load', function(){
+$(document).on('page:load ready', function(){
 	$("#category").on('change', function() {
 		location.href = $(this).val()
 	});
