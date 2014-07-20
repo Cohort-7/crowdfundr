@@ -3,5 +3,5 @@ class Comment < ActiveRecord::Base
 	belongs_to :user
 
 	validates :text, presence: true
-	validates :text, length: {minimum: 5}
+	validates :user, presence: true
 end

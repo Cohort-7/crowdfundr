@@ -30,14 +30,18 @@
 		$#{@project.goal}
 	%p
 		%b Collected money:
-		$#{@project.collected_money}
+		%span#collected-money $#{@project.collected_money}
 	%div
 		%b Rewards:
 		- @project.sorted_rewards.each do |reward|
 			%p
 				= reward.description
 				%b for $#{reward.cost}
-				(#{reward.backers_amount} backers)
+				(
+				%span{id: "reward-#{reward.id}-backers"}= reward.backers_amount
+				backers)
+				- if current_user
+					%b= button_to 'Pledge', pledges_path(reward_id: reward), method: :post, form_class: 'create-pledge'
 
 %section.zero#comments
 	%h2 Comments
