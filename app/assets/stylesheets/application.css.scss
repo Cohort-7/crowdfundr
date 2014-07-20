@@ -13,6 +13,7 @@
 // *= require_self
 // *= require normalize-rails
 */
+// $visual-grid: true;
 
 @import "bourbon";
 @import 'base/grid-settings';
@@ -20,20 +21,94 @@
 @import "base/base";
 @import "users";
 
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  10%, 20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+  }
+}
+@-moz-keyframes tada {
+  0% {
+    -moz-transform: scale(1);
+  }
+  10%, 20% {
+    -moz-transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -moz-transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -moz-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -moz-transform: scale(1) rotate(0);
+  }
+}
+@keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  10%, 20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+    -moz-transform: scale(0.9) rotate(-3deg);
+    -ms-transform: scale(0.9) rotate(-3deg);
+    -o-transform: scale(0.9) rotate(-3deg);
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+    -moz-transform: scale(1.1) rotate(3deg);
+    -ms-transform: scale(1.1) rotate(3deg);
+    -o-transform: scale(1.1) rotate(3deg);
+    transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+    -moz-transform: scale(1.1) rotate(-3deg);
+    -ms-transform: scale(1.1) rotate(-3deg);
+    -o-transform: scale(1.1) rotate(-3deg);
+    transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+    -moz-transform: scale(1) rotate(0);
+    -ms-transform: scale(1) rotate(0);
+    -o-transform: scale(1) rotate(0);
+    transform: scale(1) rotate(0);
+  }
+}
+
 .centered-navigation {
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #E7F1EC;
+  $centered-navigation-background: #F0FAF2;
   $centered-navigation-color: transparentize($base-font-color, 0.3);
   $centered-navigation-color-hover: $base-font-color;
-  $centered-navigation-height: 60px;
-  $centered-navigation-item-padding: 1em;
+  $centered-navigation-height: 100px;
+  $centered-navigation-item-padding: 1.5em;
   $centered-navigation-submenu-padding: 1em;
   $centered-navigation-submenu-width: 12em;
   $centered-navigation-item-nudge: 2.2em;
   $horizontal-bar-mode: $large-screen;
 
-  background-color: $centered-navigation-background;
+  // background-color: $centered-navigation-background;
+  background: -webkit-linear-gradient(top left,  #fff7ed,  #e5ffff) #ff0d91;
+  background: linear-gradient(to bottom right ,  #fff7ed,  #e5ffff) #ff0d91;
   border-bottom: 1px solid darken($centered-navigation-background, 6);
   height: $centered-navigation-height;
   width: 100%;
@@ -270,12 +345,13 @@
 }
 
 .footer {
-  $footer-background: desaturate(darken($base-accent-color, 20), 30);
-  $footer-color: white;
+  // $footer-background: desaturate(darken($base-accent-color, 20), 30);
+  $footer-color: BLACK;
   $footer-link-color: transparentize($footer-color, .6);
   $footer-disclaimer-color: transparentize($footer-color, .6);
 
-  background: $footer-background;
+  background: -webkit-linear-gradient(top left,  #fff7ed,  #e5ffff) #ff0d91;
+  background: linear-gradient(to bottom right ,  #fff7ed,  #e5ffff) #ff0d91;
   padding: $base-line-height*2 $gutter;
   width: 100%;
 
@@ -344,4 +420,21 @@
     max-width: 35em;
     text-align: center;
   }
+}
+
+.heart {
+  display: inline-block;
+  color: #ff0049;
+}
+
+.heart:hover {
+    -webkit-animation: tada 1s;
+    -moz-animation: tada 1s;
+    animation: tada 1s;
+}
+
+.footer-logo:hover {
+    -webkit-animation: tada 1s;
+    -moz-animation: tada 1s;
+    animation: tada 1s;
 }

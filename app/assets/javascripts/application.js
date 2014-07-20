@@ -16,10 +16,16 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('ready page:load', function() {
+// <<<<<<< HEAD
+// $(document).on('ready page:load', function() {
+// =======
+$(document).on('page:load ready', function() {
   var menu = $('.centered-navigation-menu');
   var menuToggle = $('.centered-navigation-menu-button');
   var signUp = $('.sign-up');
+
+  $('#new_comment').submit(ajaxComment);
+  $('.create-pledge').submit(createPledge);
 
   $(menuToggle).on('click', function(e) {
     e.preventDefault();
@@ -30,4 +36,3 @@ $(document).on('ready page:load', function() {
     });
   });
 });
- 

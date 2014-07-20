@@ -8,19 +8,38 @@
         = @user.first_name
         = @user.last_name
         = image_tag gravatarify_url(@user)
-      %p
-        = link_to "Account Settings", edit_user_path
-        %ul
-        %li
-          %strong Member since:
-          =pretty_time(@user.created_at)
-        %li
-          %strong Total Projects:
-          =@user.projects.count
-        %li
-          %strong Total Pledges:
-          = @user.pledges.count
+      - if owner?(@user)
+        %p
+          = link_to "Account Settings", edit_user_path
+      %ul
+      %li
+        %strong Member since:
+        =pretty_time(@user.created_at)
+      %li
+        %strong Total Projects:
+        =@user.projects.count
+      %li
+        %strong Total Pledges:
+        = @user.pledges.count
       / %button Read more
 
 %section.zero
-  = render 'user_projects'
+  - if owner?(@user)
+    =render 'current_user'
+  - else
+    =render 'user_projects'
+
+%section.zero#comments
+  %h2 Comments
+  = render @user.comments
+
+%section.zero
+  - if current_user
+    = form_for [@user, @user.comments.new] do |f|
+      %p
+        = f.label :text, "Leave comment:"
+        = f.text_area :text
+      %p
+        = f.submit
+  - else
+    %p Log In to leave a comment

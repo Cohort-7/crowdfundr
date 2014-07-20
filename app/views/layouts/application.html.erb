@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Crowdfundr</title>
+  <title>HipStarter</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,32 +12,19 @@
 
 <header class="centered-navigation">
   <div class="centered-navigation-wrapper">
-    <a href="" class="centered-navigation-menu-button">HIPSTR</a>
+    <a href="" class="centered-navigation-menu-button">HipStarter</a>
     <ul class="centered-navigation-menu">
-      <li class="nav-link"><a href="javascript:void(0)">Projects</a></li>
+      <li class="nav-link"><%= link_to "Projects", categories_url %></li>
       <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
-      <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
       <li class="logo">
         <a href="javascript:void(0)" class="logo">
-          <h2>HIPSTARTER</h2>
+          <h3>HipStarter</h3>
         </a>
       </li>
-      <li class="nav-link"><a href="javascript:void(0)">Profile</a></li>
-      <li class="nav-link more"><a href="javascript:void(0)">More</a>
-        <ul class="submenu">
-          <li><a href="javascript:void(0)">Submenu Item</a></li>
-          <li><a href="javascript:void(0)">Another Item</a></li>
-          <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-          </li>
-          <li class="more"><a href="javascript:void(0)">Another submenu</a>
-            <ul class="submenu">
-              <li><a href="javascript:void(0)">Sub-submenu</a></li>
-              <li><a href="javascript:void(0)">An Item</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><a href="javascript:void(0)">Sign up</a></li>
+      <li><% if current_user %>Hey, <%= link_to current_user.first_name, user_path(current_user) %>   <%= link_to "Log out", session_path("current"), :method => :delete %>
+    <% else %>
+      <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+    <% end %></li>
     </ul>
   </div>
 </header>
@@ -50,7 +37,7 @@
 
 <footer class="footer">
   <div class="footer-logo">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+    <img src="https://cdn1.iconfinder.com/data/icons/sweets/147/glasses.png" alt="">
   </div>
   <div class="footer-links">
     <ul>
@@ -74,6 +61,6 @@
 
   <hr>
 
-  <p>Built by Vlad, Brandon, Hassan and Alessia :)</p>
+  <p>Built by Vlad, Brandon, Hassan and Alessia with <a class="heart" href="http://rubyonrails.org/">&hearts;</a></p>
 </footer>
 </html>
