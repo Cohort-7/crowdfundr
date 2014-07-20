@@ -12,7 +12,7 @@
           = link_to project.title, project_path(project)
         .card-copy
           %strong Description:
-          = project.description
+          = project.description.truncate(160, omission: '... (continued)')
         .card-stats
           %ul
             %li
@@ -23,7 +23,7 @@
               %span $ Raised
             %li
               - if project.has_ended?
-                ${pretty_time(project.end_time)}
+                #{pretty_time(project.end_time)}
                 %span Project End Date
               - else
                 %strong Time Remaining:

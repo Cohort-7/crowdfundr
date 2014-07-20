@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HIPSTARTER</title>
+  <title>HipStarter</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,13 +12,13 @@
 
 <header class="centered-navigation">
   <div class="centered-navigation-wrapper">
-    <a href="" class="centered-navigation-menu-button">HIPSTARTER</a>
+    <a href="" class="centered-navigation-menu-button">HipStarter</a>
     <ul class="centered-navigation-menu">
       <li class="nav-link"><%= link_to "Projects", categories_url %></li>
       <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
       <li class="logo">
         <a href="javascript:void(0)" class="logo">
-          <h2>HipStarter</h2>
+          <h3>HipStarter</h3>
         </a>
       </li>
       <li><% if current_user %>Hey, <%= link_to current_user.first_name, user_path(current_user) %>   <%= link_to "Log out", session_path("current"), :method => :delete %>
