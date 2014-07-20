@@ -12,3 +12,6 @@
         %li
           = time_left_or_passed(project.end_time)
           %span Status
+- if @projects.length > 6
+  .user-input
+    = submit_tag, id:"more-results"
