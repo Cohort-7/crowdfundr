@@ -9,6 +9,8 @@
     %p= image_tag project.picture.url(:thumb)
     %p Project goal: $#{project.goal}
     %p Status: #{time_left_or_passed(project.end_time)}
-  - array = []
-  - @categories.each do |category|
-    = category.total_money
+
+    / = Category.all.inject(0) {|t, c| t += c.total_people_backed; t}
+
+  
+  / = Category.all.inject(0) {|t, c| t += c.total_money; t}
