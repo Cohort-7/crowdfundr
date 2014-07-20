@@ -5,8 +5,6 @@
   - options =render @categories
   = select_tag("category", options.html_safe, :prompt => "Please select a Category")
   #projects
-    - if @projects.length > 6
-      @projects.paginate
     = render @projects
 
 
