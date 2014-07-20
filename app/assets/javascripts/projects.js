@@ -1,6 +1,3 @@
-
-
-
 $(document).on('ready page:load', function() {
   if ($('.pagination').length) {
     $(window).scroll(function() {
