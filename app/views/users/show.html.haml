@@ -29,11 +29,8 @@
   - else
     =render 'user_projects'
 
-%section.zero#comments
-  %h2 Comments
-  = render @user.comments
-
 %section.zero
+  %h2 Comments:
   - if current_user
     = form_for [@user, @user.comments.new] do |f|
       %p
@@ -43,3 +40,9 @@
         = f.submit
   - else
     %p Log In to leave a comment
+
+%section.zero#comments
+  = render @comments
+
+%section.zero
+  = link_to "Load more comments", user_path(@user, c: (@page+1)), data: {c: @page}, class: "mega-button", id: "load-comments"

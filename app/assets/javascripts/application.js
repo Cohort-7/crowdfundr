@@ -23,6 +23,7 @@ $(document).on('page:load ready', function() {
   $('#search-form').on('submit', ajaxSearch)
 
   $('#new_comment').submit(ajaxComment);
+  $('#load-comments').click(loadComments);
   $('.create-pledge').submit(createPledge);
 
   $(menuToggle).on('click', function(e) {

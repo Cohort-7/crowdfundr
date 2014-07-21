@@ -4,6 +4,22 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @page = params[:c] || 1
+    @page = @page.to_i
+    num_of_comments_per_page = 5
+    num_of_comments = @page * num_of_comments_per_page
+
+    respond_to do |format|
+      unless params[:c]
+        @comments = @project.comments.order('created_at desc').limit(num_of_comments)
+        format.html
+      else
+        format.html {@comments = @project.comments.order('created_at desc').limit(num_of_comments)}
+        format.js {@comments = @project.comments.order('created_at desc')
+                                    .limit(num_of_comments_per_page)
+                                    .offset(num_of_comments)}
+      end
+    end
   end
 
   def new

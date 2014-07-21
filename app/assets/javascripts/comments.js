@@ -13,3 +13,23 @@ function ajaxComment(e) {
 		}
 	});
 }
+
+function loadComments(e) {
+	e.preventDefault();
+	if ( !$(this).hasClass('disabled') ) {
+		var c = $(this).data('c');
+		$.ajax({
+			url: window.location.pathname + '?c=' + c,
+			type: 'GET',
+			dataType: 'script',
+			context: this,
+			beforeSend: function() {
+				$(this).addClass('disabled').css("background-color", "grey");
+				$(this).data('c', c + 1);
+			},
+			complete: function() {
+				$(this).removeClass('disabled').removeAttr("style");
+			}
+		});
+	}
+}

@@ -49,11 +49,8 @@
 				- if current_user
 					%b= button_to 'Pledge', pledges_path(reward_id: reward), method: :post, form_class: 'create-pledge'
 
-%section.zero#comments
-	%h2 Comments
-	= render @project.comments
-
 %section.zero
+	%h2 Comments
 	- if current_user
 		= form_for [@project, @project.comments.new] do |f|
 			%p
@@ -63,3 +60,9 @@
 				= f.submit
 	- else
 		%p Log In to leave a comment
+
+%section.zero#comments
+	= render @comments
+
+%section.zero
+	= link_to "Load more comments", project_path(@project, c: (@page+1)), data: {c: @page}, class: "mega-button", id: "load-comments"
