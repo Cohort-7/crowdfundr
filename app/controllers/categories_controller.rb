@@ -5,7 +5,7 @@
     @projects = if params[:search]
       Project.tagged_with(["#{params[:search].strip.gsub(/\s/, ", ")}"], any: true, wild: true)
     else
-      Project.order(end_time: :asc).limit(6)
+      Project.not_ended.order('RANDOM()').limit(6)
     end
 
     respond_to do |format|
