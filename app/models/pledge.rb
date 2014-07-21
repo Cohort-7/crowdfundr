@@ -8,4 +8,8 @@ class Pledge < ActiveRecord::Base
   validates :user, presence: true
   validates :reward, presence: true
 
+  def cost
+    reward.cost
+  end
+
 end

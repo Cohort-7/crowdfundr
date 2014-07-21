@@ -39,10 +39,10 @@
 
 - else
   - @user.pledges.each do |pledge|
-    .cards
+    .cards.pro
       .card
         .card-header
-          %h3 $#{pledge.amount} pledge
+          %h4 $#{pledge.cost}
           %p
             %strong
             = link_to pledge.project.title, project_path(pledge.project)
