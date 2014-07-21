@@ -14,12 +14,12 @@
   <div class="centered-navigation-wrapper">
     <a href="" class="centered-navigation-menu-button">HipStarter</a>
     <ul class="centered-navigation-menu">
-      <li class="nav-link"><%= link_to "Home", categories_url %></li>
+      <li class="nav-link"><%= link_to "Home", root_url %></li>
       <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
       <li class="logo">
-        <a href="javascript:void(0)" class="logo">
+        <%= link_to root_url do %>
           <h3>HipStarter</h3>
-        </a>
+        <% end %>
       </li>
       <li><% if current_user %>Hey, <%= link_to current_user.first_name, user_path(current_user) %>   <%= link_to "Log out", session_path("current"), :method => :delete %>
     <% else %>
