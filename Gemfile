@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-
-
 gem 'acts-as-taggable-on'
 gem "paperclip", "~> 4.1"
 gem 'faker'
@@ -33,7 +31,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'kaminari'
-
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
